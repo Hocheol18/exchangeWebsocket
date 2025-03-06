@@ -23,7 +23,7 @@ public class UpbitWebSocketService {
     @EventListener(ApplicationReadyEvent.class)
     public void connectToUpbit() {
         try {
-
+            log.info("Upbit Websocket connecting...");
             // 각 핸들러를 사용하여 WebSocket 연결 시작
             // TODO : ORDERBOOK Ticker
             webSocketClient.doHandshake(upbitTradeHandler, upbitServerURL);
