@@ -6,15 +6,21 @@ import com.trading.upbit.dto.TickerData;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
 
 @Component
-@RequiredArgsConstructor
+
 public class UpbitWebSocketUtil {
     private final ObjectMapper camelObjectMapper;
+
+    // Qualifier :: 의존성 주입
+    public UpbitWebSocketUtil(@Qualifier("upbitCamelObjectMapper") ObjectMapper camelObjectMapper) {
+        this.camelObjectMapper = camelObjectMapper;
+    }
 
     public String makeBody(UpbitRequestType type, List<String> codes) throws JsonProcessingException {
         TicketData ticketData = createTicketData();

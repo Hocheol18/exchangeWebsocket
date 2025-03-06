@@ -1,24 +1,24 @@
 package com.trading.upbit;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 import org.springframework.web.socket.client.WebSocketClient;
 
-import com.trading.upbit.UpbitTradeHandler;
-
-import java.net.URI;
-
 @Slf4j
 @Service
-@RequiredArgsConstructor
+
 public class UpbitWebSocketService {
     private static final String upbitServerURL = "wss://api.upbit.com/websocket/v1";
-
     private final WebSocketClient webSocketClient;
     private final UpbitTradeHandler upbitTradeHandler;
+
+    public UpbitWebSocketService(@Qualifier("upbitWebSocket") WebSocketClient webSocketClient, UpbitTradeHandler upbitTradeHandler) {
+        this.webSocketClient = webSocketClient;
+        this.upbitTradeHandler = upbitTradeHandler;
+    }
 
     @EventListener(ApplicationReadyEvent.class)
     public void connectToUpbit() {
