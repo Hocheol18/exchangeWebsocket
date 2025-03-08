@@ -1,4 +1,4 @@
 package com.trading.okx.dto;
 
-public class Orderbook {
+public class OrderBook {
 }

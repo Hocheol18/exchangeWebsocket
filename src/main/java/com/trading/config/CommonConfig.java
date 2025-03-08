@@ -22,7 +22,7 @@ public class CommonConfig {
                 .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
 
-    // 업비트용 ObjectMapper들
+    // 업비트 ObjectMapper
     @Bean("upbitSnakeObjectMapper")
     public ObjectMapper upbitSnakeObjectMapper() {
         return new ObjectMapper()
@@ -38,7 +38,7 @@ public class CommonConfig {
                 .setPropertyNamingStrategy(PropertyNamingStrategies.LOWER_CAMEL_CASE);
     }
 
-    // 바이낸스용 ObjectMapper들
+    // 바이낸스 ObjectMapper
     @Bean("binanceSnakeObjectMapper")
     public ObjectMapper binanceSnakeObjectMapper() {
         return new ObjectMapper()
@@ -54,6 +54,22 @@ public class CommonConfig {
                 .setPropertyNamingStrategy(PropertyNamingStrategies.LOWER_CAMEL_CASE);
     }
 
+    // 바이비트 ObjectMapper
+    @Bean("bybitSnakeObjectMapper")
+    public ObjectMapper bybitSnakeObjectMapper() {
+        return new ObjectMapper()
+                .registerModule(new JavaTimeModule())
+                .setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE)
+                .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+    }
+
+    @Bean("bybitObjectMapper")
+    public ObjectMapper bybitObjectMapper() {
+        return new ObjectMapper()
+                .registerModule(new JavaTimeModule())
+                .setPropertyNamingStrategy(PropertyNamingStrategies.LOWER_CAMEL_CASE);
+    }
+
     // WebSocket 클라이언트들
     @Bean("upbitWebSocket")
     public WebSocketClient upbitWebSocketClient() {
@@ -62,6 +78,11 @@ public class CommonConfig {
 
     @Bean("binanceWebSocket")
     public WebSocketClient binanceWebSocketClient() {
+        return new StandardWebSocketClient();
+    }
+
+    @Bean("bybitWebSocket")
+    public WebSocketClient bybitWebSocketClient() {
         return new StandardWebSocketClient();
     }
 }

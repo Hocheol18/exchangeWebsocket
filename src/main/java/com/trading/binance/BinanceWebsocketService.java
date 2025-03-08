@@ -26,7 +26,7 @@ public class BinanceWebsocketService {
             log.info("Connecting to Binance Websocket...");
             webSocketClient.doHandshake(binanceTradeHandler, binanceServerUrl);
         } catch (Exception e) {
-            log.error("바이낸스 Websocket 연결 실패, e");
+            log.error("바이낸스 Websocket 연결 실패", e);
         }
     }
 }

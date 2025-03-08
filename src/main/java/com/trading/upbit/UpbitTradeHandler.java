@@ -4,7 +4,6 @@ import com.trading.upbit.UpbitRequestType;
 import com.trading.upbit.dto.Trade;
 import com.trading.upbit.UpbitWebSocketUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
