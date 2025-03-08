@@ -70,6 +70,22 @@ public class CommonConfig {
                 .setPropertyNamingStrategy(PropertyNamingStrategies.LOWER_CAMEL_CASE);
     }
 
+    // 오켁스 ObjectMapper
+    @Bean("okxSnakeObjectMapper")
+    public ObjectMapper okxSnakeObjectMapper() {
+        return new ObjectMapper()
+                .registerModule(new JavaTimeModule())
+                .setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE)
+                .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+    }
+
+    @Bean("okxObjectMapper")
+    public ObjectMapper okxObjectMapper() {
+        return new ObjectMapper()
+                .registerModule(new JavaTimeModule())
+                .setPropertyNamingStrategy(PropertyNamingStrategies.LOWER_CAMEL_CASE);
+    }
+
     // WebSocket 클라이언트들
     @Bean("upbitWebSocket")
     public WebSocketClient upbitWebSocketClient() {
@@ -83,6 +99,11 @@ public class CommonConfig {
 
     @Bean("bybitWebSocket")
     public WebSocketClient bybitWebSocketClient() {
+        return new StandardWebSocketClient();
+    }
+
+    @Bean("okxWebsocket")
+    public WebSocketClient okxWebSocketClient() {
         return new StandardWebSocketClient();
     }
 }
