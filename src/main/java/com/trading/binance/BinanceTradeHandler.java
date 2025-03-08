@@ -32,14 +32,12 @@ public class BinanceTradeHandler extends TextWebSocketHandler {
 
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-        String payload = message.getPayload();
-        log.info("바이낸스 데이터 수신: {}", payload);
+
 
         // 데이터 처리 로직...
         try {
-            // 바이낸스 응답 형식에 맞게 파싱
-            // Trade trade = objectMapper.readValue(payload, Trade.class);
-            // log.info("파싱된 데이터: {}", trade);
+            String payload = message.getPayload();
+            log.info("바이낸스 데이터 수신: {}", payload);
         } catch (Exception e) {
             log.error("데이터 파싱 오류", e);
         }
