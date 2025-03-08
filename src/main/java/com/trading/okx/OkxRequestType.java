@@ -1,12 +1,11 @@
-package com.trading.binance;
+package com.trading.okx;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-
-public enum BinanceRequestType {
+public enum OkxRequestType {
 
     TICKER("ticker"),
     TRADE("trade"),
