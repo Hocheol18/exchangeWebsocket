@@ -86,6 +86,19 @@ public class CommonConfig {
                 .setPropertyNamingStrategy(PropertyNamingStrategies.LOWER_CAMEL_CASE);
     }
 
+    // 빗썸 ObjectMapper
+    @Bean("bithumbSnakeObjectMapper")
+    public ObjectMapper bithumbSnakeObjectMapper() {
+        return new ObjectMapper().registerModule(new JavaTimeModule()).setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE).configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+    }
+
+    @Bean("bithumbObjectMapper")
+    public ObjectMapper bithumbObjectMapper() {
+        return new ObjectMapper()
+                .registerModule(new JavaTimeModule())
+                .setPropertyNamingStrategy(PropertyNamingStrategies.LOWER_CAMEL_CASE);
+    }
+
     // WebSocket 클라이언트들
     @Bean("upbitWebSocket")
     public WebSocketClient upbitWebSocketClient() {
