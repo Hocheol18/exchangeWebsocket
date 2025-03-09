@@ -106,4 +106,9 @@ public class CommonConfig {
     public WebSocketClient okxWebSocketClient() {
         return new StandardWebSocketClient();
     }
+
+    @Bean("bithumbWebsocket")
+    public WebSocketClient bithumbWebSocketClient() {
+        return new StandardWebSocketClient();
+    }
 }
