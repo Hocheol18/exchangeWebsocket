@@ -24,7 +24,7 @@ public class BithumbTradeHandler extends TextWebSocketHandler {
     public void afterConnectionEstablished(WebSocketSession session) throws IOException {
         log.info("빗썸 WebSocket 연결됨: {}", session.getId());
 
-
+    // 구독 형식 필요
 //        String subscribeMessage = "{\"method\": \"SUBSCRIBE\", \"params\": [\"btcusdt@trade\"], \"id\": 1}";
 //        session.sendMessage(new TextMessage(subscribeMessage));
     }
