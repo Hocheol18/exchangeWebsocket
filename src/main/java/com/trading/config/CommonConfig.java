@@ -124,4 +124,9 @@ public class CommonConfig {
     public WebSocketClient bithumbWebSocketClient() {
         return new StandardWebSocketClient();
     }
+
+    @Bean("gateioWebsocket")
+    public WebSocketClient gateioWebSocketClient() {
+        return new StandardWebSocketClient();
+    }
 }
